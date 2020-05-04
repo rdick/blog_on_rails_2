@@ -1,0 +1,17 @@
+<div style="margin: 0px 40px 40px 40px;">
+    <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-xl-4 col-lg-6 col-xs-12" style="margin-top: 20px">
+            <div class="card">
+                <div class="card-body">
+                    <%= link_to post do %>
+                    <h3 class="card-title text-primary text-truncate"><%= post.title %> </h5>
+                        <% end %>
+                        <p class="card-text text-truncate"> <%= post.body %>.. </p>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <% end %>
+    </div>
+</div>

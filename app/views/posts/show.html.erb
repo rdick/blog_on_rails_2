@@ -1,0 +1,39 @@
+<div style="margin: 30px 20px 0 20px">
+
+    <h1> <%= @post.title %> </h1>
+    <p> <%= @post.body %> </p>
+    <%= link_to  "Edit", edit_post_path(@post), class: "btn btn-outline-primary btn-lg" %>
+    <%= link_to "Delete", post_path(@post, @comment), method: :delete, class: "btn btn-outline-primary btn-lg"%>
+
+    <br>
+    <br>
+    <h3>Comments Here</h3>
+
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+    <div class="form-group">
+        <%= f.text_area(
+        :body,
+        class: 'form-control',
+        placeholder: 'Comments about Post',
+        cols: 50,
+        rows: 5
+    ) %>
+        <%= f.submit 'Submit', class: "btn btn-outline-primary btn-lg", style: "margin: 25px 0 25px 0" %>
+        <% end %>
+        <br>
+
+        <ul class="list-group">
+            <% @comments.each do |comment|  %>
+            <li class="list-group-item" style="">
+                <h6> <%= comment.body %> </h6>
+                <small> Commented <%= time_ago_in_words(comment.created_at) %> • <%= link_to(
+            "Delete",
+            comment_path(comment),
+            method: :delete
+        ) %> </small>
+
+            </li>
+            <% end %>
+        </ul>
+
+    </div>
