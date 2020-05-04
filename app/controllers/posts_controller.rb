@@ -7,7 +7,7 @@ class PostsController < ApplicationController
         @post= Post.find params[:id]
         @comment = Comment.new
 
-        @comments = Comment.all
+        @comments =  @post.comments
     end
 
     def new
