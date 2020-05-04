@@ -17,10 +17,17 @@
         </div>
 
         <div style="width: 75%;">
-            <div class="float-right" style="width: 22%;">
-                <div class="d-flex justify-content-around">
+            <div class="float-right" style="width: 80%;">
+
+                <div class="d-flex justify-content-end align-items-center">
+                    <% if user_signed_in? %>
+                    <%= link_to "Logout", session_path, method: :delete, class: "btn btn-danger", style: "margin-right: 30px" %>
+                    <%= link_to "#{current_user.name}",  user_path(current_user)%>
+                    <% else %>
+                    <%= link_to "Login", new_session_path, class: "btn btn-success" %>
+                    <% end %>
                     <a href="/">
-                        <h5 class="nav-item text-primary">Home</h5>
+                        <h5 class="nav-item text-primary" style="margin-right: 30px">Home</h5>
                     </a>
                     <a href="/posts/new">
                         <h5 class="nav-item text-primary">New Post</h5>
@@ -29,6 +36,12 @@
             </div>
         </div>
     </nav>
+
+    <% flash.each do |type, message| %>
+    <div class='bg-<%= type %> p-3 rounded mb-2 shadow-sm'>
+        <%= message %>
+    </div>
+    <% end %>
 
     <%= yield %>
 
