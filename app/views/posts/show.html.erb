@@ -4,7 +4,8 @@
     <p> <%= @post.body %> </p>
     <%= link_to  "Edit", edit_post_path(@post), class: "btn btn-outline-primary btn-lg" %>
     <%= link_to "Delete", post_path(@post, @comment), method: :delete, class: "btn btn-outline-primary btn-lg"%>
-
+    <br>
+    <p>Created By: <%= @post.user.name%></p>
     <br>
     <br>
     <h3>Comments Here</h3>
@@ -30,7 +31,7 @@
             "Delete",
             comment_path(comment),
             method: :delete
-        ) %> </small>
+        ) %> • Created By: <%= comment.user.name  %> </small>
 
             </li>
             <% end %>
