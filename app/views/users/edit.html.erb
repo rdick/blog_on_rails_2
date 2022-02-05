@@ -1,0 +1,21 @@
+<br>
+<div class="container">
+    <h1> Change Account Details </h1>
+    <br>
+
+    <%= form_with model: current_user, local:true do |f| %>
+    <div class='form-group'>
+        <%= f.label :password %>
+        <%= f.text_field(:password, class: 'form-control')%>
+    </div>
+    <div class='form-group'>
+        <%= f.label :newpassword %>
+        <%= f.text_area(:newpassword, class: 'form-control')%>
+    </div>
+    <div class='form-group'>
+        <%= f.label :newpassword_confirmation%>
+        <%= f.text_area(:newpassword_confirmation, class: 'form-control')%>
+    </div>
+    <%= f.submit "Submit", class: 'btn btn-primary'%>
+    <% end %>
+</div>
