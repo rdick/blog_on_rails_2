@@ -35,11 +35,9 @@ class UsersController < ApplicationController
         end
 
         if emailNameParams.empty?
-            byebug
             if ((passwordParams[:newpassword] == passwordParams[:newpassword_confirmation]) && 
                 (passwordParams[:password] != passwordParams[:newpassword]) && 
                 (user.authenticate(passwordParams[:password])))
-                    byebug
                 if user.update_attribute(:password, passwordParams[:newpassword])
                     flash[:success] = "Password Changed"
                     redirect_to user_path(:user)

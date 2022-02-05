@@ -25,9 +25,8 @@ non_user = User.create(
 )
 
 NUM_USER.times do
-    name = Faker::Name.first_name
     User.create(
-        name: name,
+        name: Faker::Name.first_name,
         email: Faker::Internet.email,
         password: PASSWORD
     )
